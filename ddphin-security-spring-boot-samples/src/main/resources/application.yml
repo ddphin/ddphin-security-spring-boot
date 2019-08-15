@@ -10,7 +10,7 @@ spring:
       wx:
         xcx:
           appId: xxxxx
-          appSecret: xxxxx
+          appSecret: d7e324739e0e6fbbbed10e645aa43f6d
   # 默认使用配置
   ## 1. DB
   datasource:
