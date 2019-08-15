@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ddphin.security.demo.mapper.APermissionMapper">
+
+	<select id="queryPermissionIdList" resultType="java.lang.Long">
+		select t3.`id`
+		from auth_user_role t1
+		   , auth_role_permission t2
+		   , auth_permission t3
+		where t1.`userId` = #{userId}
+		  and t2.`id` = t1.`roleId`
+		  and t3.`id` = t2.`permissionId`
+		group by t3.`id`
+	</select>
+
+	<select id="queryAllPermission" resultType="Permission">
+		select `id`
+		     , `requestUrl`
+			 , `requestMethod`
+		from auth_permission
+	</select>
+
+</mapper>

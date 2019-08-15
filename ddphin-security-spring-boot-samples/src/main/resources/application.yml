@@ -1,0 +1,52 @@
+spring:
+  # security
+  security:
+    authorize:
+      login: /login
+      logout: /logout
+      permissive:
+        - /tourist/*
+    social:
+      wx:
+        xcx:
+          appId: xxxxx
+          appSecret: xxxxx
+  # 默认使用配置
+  ## 1. DB
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: ddphin
+    password: ddphin
+    url: jdbc:mysql://xxx.xxx.xxx.xxx:13306/ddphin?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+
+    ## 2. Hikari datasource
+    hikari:
+    minimum-idle: 5
+    maximum-pool-size: 15
+    auto-commit: true
+    idle-timeout: 30000
+    pool-name: DatebookHikariCP
+    max-lifetime: 1800000
+    connection-timeout: 30000
+    connection-test-query: SELECT 1
+
+  redis:
+    database: 9
+    host: xxx.xxx.xxx.xxx
+    port: 16379
+    password: ddphin
+    timeout: 60s
+
+server:
+  servlet:
+    context-path: /api #设置项目ContextPath
+  port: 8080 #设置Tomcat端口，默认8080
+  tomcat:
+    uri-encoding: UTF-8 #设置Tomcat编码
+## 4. Mybatis entity
+mybatis:
+  mapper-locations:
+    classpath*:com/ddphin/security/demo/mapper/xml/*Mapper.xml
+  type-aliases-package:
+    com.ddphin.security.endpoint.entity

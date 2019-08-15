@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ddphin.security.demo.mapper.AUserSocialMapper">
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert into auth_user_social (
+			     `userId`
+			   , `identifierType`
+			   , `socialType`
+			   , `socialValue`
+			   , `accessToken`
+			   , `refreshToken`
+			   , `expireTime`
+			   , `sessionKey`
+			   , `name`
+			   , `avatar`
+			   , `gender`)
+		values (
+				 #{userId}
+			   , #{identifierType}
+			   , #{socialType}
+			   , #{socialDetail.openid}
+			   , #{socialDetail.accessToken}
+			   , #{socialDetail.refreshToken}
+			   , #{socialDetail.expireTime}
+			   , #{socialDetail.sessionKey}
+			   , #{socialDetail.name}
+			   , #{socialDetail.avatar}
+			   , #{socialDetail.gender})
+	</insert>
+
+	<update id="update">
+		update auth_user_social
+		<trim prefix="set" suffixOverrides=",">
+			<if test="socialDetail.accessToken != null">
+				`accessToken` = #{socialDetail.accessToken},
+			</if>
+			<if test="socialDetail.refreshToken != null">
+				`refreshToken` = #{socialDetail.refreshToken},
+			</if>
+			<if test="socialDetail.expireTime != null">
+				`expireTime` = #{socialDetail.expireTime},
+			</if>
+			<if test="socialDetail.sessionKey != null">
+				`sessionKey` = #{socialDetail.sessionKey},
+			</if>
+			<if test="socialDetail.name != null">
+				`name` = #{socialDetail.name},
+			</if>
+			<if test="socialDetail.avatar != null">
+				`avatar` = #{socialDetail.avatar},
+			</if>
+			<if test="socialDetail.gender != null">
+				`gender` = #{socialDetail.gender},
+			</if>
+		</trim>
+		where `userId` = #{userId}
+		  and `identifierType` = #{identifierType}
+		  and `socialType` = #{socialType}
+	</update>
+
+
+	<select id="query" resultType="UserSocial">
+		select `id`
+			 , `userId`
+			 , `identifierType`
+			 , `socialType`
+			 , `socialValue`
+			 , `accessToken`
+			 , `refreshToken`
+			 , `expireTime`
+			 , `sessionKey`
+			 , `name`
+			 , `avatar`
+			 , `gender`
+		from auth_user_social
+		where `userId` = #{userId}
+		  and `identifierType` = #{identifierType}
+		  and `socialType` = #{socialType}
+	</select>
+
+</mapper>

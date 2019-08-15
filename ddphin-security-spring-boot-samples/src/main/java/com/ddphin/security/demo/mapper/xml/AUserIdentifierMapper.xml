@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ddphin.security.demo.mapper.AUserIdentifierMapper">
+
+	<insert id="insert" useGeneratedKeys="true" keyProperty="id">
+		insert into auth_user_identifier (
+									   `userId`
+									 , `identifierType`
+									 , `identifierValue`)
+		values (
+				 #{userId}
+			   , #{identifierType}
+			   , #{identifierValue})
+	</insert>
+
+	<select id="query" resultType="UserIdentifier">
+		select `id`
+			, `userId`
+			, `identifierType`
+			, `identifierValue`
+		from auth_user_identifier
+		where `identifierType` = #{identifierType}
+		  and `identifierValue` = #{identifierValue}
+	</select>
+
+</mapper>
