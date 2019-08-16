@@ -40,17 +40,10 @@
         <java.version>1.8</java.version>
         <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
         <mybatis-spring-boot.version>2.0.1</mybatis-spring-boot.version>
-        <pagehelper-spring-boot.version>1.2.12</pagehelper-spring-boot.version>
         <fastjson.version>1.2.47</fastjson.version>
         <commons-collections4.version>4.3</commons-collections4.version>
-        <auth-jwt.version>3.8.1</auth-jwt.version>
-        <google-guava.version>28.0-jre</google-guava.version>
-        <joda-time.version>2.10.3</joda-time.version>
         <bcprov-jdk15on.version>1.62</bcprov-jdk15on.version>
-        <commons-lang3.version>3.6</commons-lang3.version>
-        <commons-io.version>2.6</commons-io.version>
         <lombok.version>1.18.8</lombok.version>
-        <ddphin-rabbitmq.version>1.0.0</ddphin-rabbitmq.version>
     </properties>
 
     <dependencies>
@@ -104,13 +97,6 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
             <version>${commons-collections4.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
         </dependency>
 
         <dependency>

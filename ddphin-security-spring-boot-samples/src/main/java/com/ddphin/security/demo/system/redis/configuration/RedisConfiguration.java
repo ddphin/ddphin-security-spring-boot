@@ -33,13 +33,10 @@ public class RedisConfiguration {
                 .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericFastJsonRedisSerializer()))
                 .disableCachingNullValues();
 
-        Map<String, RedisCacheConfiguration> cacheConfigurationMap = new HashMap<>();
-        Arrays.stream(CacheNames.values()).forEach(o -> cacheConfigurationMap.put(o.name(), config));
         // 根据redis缓存配置和reid连接工厂生成redis缓存管理器
         return RedisCacheManager.builder(connectionFactory)
                 .cacheDefaults(config)
                 .transactionAware()
-                .withInitialCacheConfigurations(cacheConfigurationMap)
                 .build();
     }
 
