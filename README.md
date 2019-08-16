@@ -28,7 +28,8 @@
 - 权限
   <br>请求头携带token，根据请求URL（如：/user/account/*等）和METHOD（如：GET/PUT/POST等），校验是否有权限访问
 - 获取当前用户
-  <br>登录和JWT认证之后，可在当前线程任何地方获取到当前用户
+  <br>登录和JWT认证之后，可在当前线程任何地方获取到当前用户<br>
+  `(AIdentity) SecurityContextHolder.getContext().getAuthentication().getDetails()`
 
 ## 使用
 - 配置
