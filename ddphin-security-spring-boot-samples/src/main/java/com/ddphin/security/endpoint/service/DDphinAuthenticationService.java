@@ -62,7 +62,12 @@ public class DDphinAuthenticationService extends IDWorkerAware implements Authen
 
     @Override
     public String queryValidCode(String mobile) {
-        return (String) redisHelper.forValue().get("_valid_code_@"+mobile);
+        return (String) redisHelper.forValue().get("_valid_code_@mobile="+mobile);
+    }
+
+    @Override
+    public void removeValidCode(String mobile) {
+        redisHelper.redis().delete("_valid_code_@mobile="+mobile);
     }
 
     @Override
