@@ -9,8 +9,8 @@ spring:
     social:
       wx:
         xcx:
-          appId: wx73d6304dda0c6200
-          appSecret: d7e324739e0e6fbbbed10e645aa43f6d
+          appId: xxxxx
+          appSecret: xxxxx
   # 默认使用配置
   ## 1. DB
   datasource:
@@ -18,7 +18,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: ddphin
     password: ddphin
-    url: jdbc:mysql://120.78.89.124:13306/ddphin?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
+    url: jdbc:mysql://xxx.xxx.xxx.xxx:13306/ddphin?useUnicode=true&characterEncoding=UTF-8&autoReconnect=true&useSSL=false&zeroDateTimeBehavior=convertToNull
 
     ## 2. Hikari datasource
     hikari:
@@ -33,9 +33,9 @@ spring:
 
   redis:
     database: 9
-    host: 120.78.89.124
+    host: xxx.xxx.xxx.xxx
     port: 16379
-    password: iCDD2019
+    password: ddphin
     timeout: 60s
 
 server:
