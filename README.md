@@ -32,7 +32,7 @@
   <br>登录和JWT认证之后，可在当前线程任何地方获取到当前用户<br>
   `(AIdentity) SecurityContextHolder.getContext().getAuthentication().getDetails()`
 
-## 使用
+## 服务端使用
 - 配置
    - login： 登录url
    - logout：登出url
@@ -180,8 +180,8 @@
         ASocialDetail querySocialDetail(String code, Map<String, Object> socialExtra);
      }
      ```
-## 参数
-### 登录请求
+## 前端使用
+### 登录请求参数
 - identifierType: 用户唯一标识类型
     - 必填
     - 有效值为：0、1、2
@@ -212,10 +212,10 @@
 - invitationCode: 邀请码，注册时传递
     - 可选
     - 有效值：字符串
-### 登录成功
+### 登录成功返回参数
 返回 Http Header 包含：
 - Authorization: Bearer xxxxxxxxxxxxxxxxjwtxxxxxxxxxxxxxx
-### 身份和权限认证
+### 身份和权限认证参数
 请求 Http Header 包含：
 - Authorization: Bearer xxxxxxxxxxxxxxxxjwtxxxxxxxxxxxxxx
 ## 举例
