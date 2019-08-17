@@ -209,7 +209,7 @@
 - invitationCode: 邀请码，注册时传递
     - 可选
     - 有效值：字符串
-### 登录返回
+### 登录成功
 返回 Http Header 包含：
 - Authorization: Bearer xxxxxxxxxxxxxxxxjwtxxxxxxxxxxxxxx
 ### 身份和权限认证
