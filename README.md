@@ -90,7 +90,7 @@
             String getSocialValue();    // 用户社交账号
         }
         ```
-        `SocialType`用户社交账号类型对应以下枚举
+        `SocialType`建议用户社交账号类型对应以下枚举，也可以自定义
         ```$xslt
         public enum ASocialType {
             WX_APP_OPENID,// 微信移动端
@@ -101,6 +101,7 @@
         
             QQ_APP_OPENID,// QQ 移动端
             QQ_H5_OPENID; // QQ H5 端
+        }
         ```
      - `APermission`:权限
         ```$xslt
