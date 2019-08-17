@@ -172,7 +172,7 @@
      ```$xslt
      public abstract class ASocialProviderRegister {
         // 支持的社交账号类型
-        ASocialType socialType();
+        Integer socialType();
         // 获取社交账号信息：
         // code: 授权码
         // data: 请求数据
