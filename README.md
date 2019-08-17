@@ -176,8 +176,8 @@
         ASocialType socialType();
         // 获取社交账号信息：
         // code: 授权码
-        // socialExtra: 请求数据
-        ASocialDetail querySocialDetail(String code, Map<String, Object> socialExtra);
+        // data: 请求数据
+        ASocialDetail querySocialDetail(String code, Map<String, Object> data);
      }
      ```
 ## 前端使用
