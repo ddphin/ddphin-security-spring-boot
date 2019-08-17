@@ -179,5 +179,41 @@
         ASocialDetail querySocialDetail(String code, Map<String, Object> socialExtra);
      }
      ```
+## 参数
+### 登录请求
+- identifierType: 用户唯一标识类型
+    - 必填
+    - 有效值为：0、1、2
+    <br>即AIdentifierType 各枚举的 ordinal() 方法返回值
+- identifierValue: 用户唯一标识
+    - 必填
+    - 有效值为
+        - identifierType=0(MOBILE)时：手机号
+        - identifierType=1(WX)时：0、1、2、3、4
+        <br>即ASocialType枚举中的WX_APP_OPENID、WX_H5_OPENID、WX_XCX_OPENID、WX_SUB_OPENID、WX_SRV_OPENID的 ordinal() 方法返回值
+        - identifierType=2(QQ)时：5、6
+        <br>即ASocialType枚举中的QQ_APP_OPENID、QQ_H5_OPENID的 ordinal() 方法返回值
+- credentialType: 用户凭据类型
+    - 必填
+    - 有效值为：0、1、2
+    <br>即ACredentialType 各枚举的 ordinal() 方法返回值
+- credentialValue: 用户凭据
+    - 必填
+    - 有效值为
+        - ACredentialType=0(PASSWORD)时：密码
+        - ACredentialType=1(VALID_CODE)时：验证码
+        - ACredentialType=2(GRANT_CODE)时：授权码
+- data: 扩展数据，QQ或微信登录时传递
+    - 可选
+    - 有效值：JSON
+- invitationCode: 邀请码，注册时传递
+    - 可选
+    - 有效值：字符串
+### 登录返回
+返回 Http Header 包含：
+- Authorization: Bearer xxxxxxxxxxxxxxxxjwtxxxxxxxxxxxxxx
+### 身份和权限认证
+请求 Http Header 包含：
+- Authorization: Bearer xxxxxxxxxxxxxxxxjwtxxxxxxxxxxxxxx
 ## 举例
 [请查看 ddphin-security-spring-boot-samples](https://github.com/ddphin/ddphin-security-spring-boot/tree/master/ddphin-security-spring-boot-samples)
