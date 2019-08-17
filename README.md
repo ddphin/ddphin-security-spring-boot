@@ -120,65 +120,65 @@
         ```         
    - service： 认证所需的服务
      - AuthenticationService： 认证服务
-     ```$xslt
-     public interface AuthenticationService {
-         // 查询Identifier
-         AIdentifier queryIdentifier(Integer identifierType, String identifierValue);
-         // 保存Identifier，自动注册时需要
-         void saveIdentifier(Long userId, Integer identifierType, String identifierValue);
-     
-         // 查询Credential
-         ACredential queryCredential(Long userId, Integer credentialType);
-     
-         // 查询用户的Permission
-         List<String> queryPermissionIdList(Long userId);
-         // 查询所有的Permission
-         List<? extends APermission> queryAllPermission();
-     
-         // 查询ValidCode
-         String queryValidCode(String mobile);
-         // 移除ValidCode，ValidCode验证成功之后需要
-         void removeValidCode(String mobile);
-     
-         // 获取一个新的UserID,自动注册时需要
-         Long nextUserId();
-         // 保存用户信息： 邀请码，手机号,自动注册时需要
-         void saveUser(Long userId, String invitationCode, String mobile);
-         // 保存用户信息： 邀请码，社交张账号信息,自动注册时需要
-         void saveUser(Long userId, String invitationCode, ASocialDetail socialDetail);
-     
-         // 查询用户已保存的Social信息
-         ASocial querySocial(Long userId, Integer identifierType, Integer socialType);
-         // 保存社交账号信息，自动注册时需要
-         void saveSocial(Long userId, Integer identifierType, Integer socialType, ASocialDetail socialDetail);
-         // 更新社交账号信息，可选
-         void updateSocial(Long userId, Integer identifierType, Integer socialType, ASocialDetail socialDetail);
-     }
-     ```
+         ```$xslt
+         public interface AuthenticationService {
+             // 查询Identifier
+             AIdentifier queryIdentifier(Integer identifierType, String identifierValue);
+             // 保存Identifier，自动注册时需要
+             void saveIdentifier(Long userId, Integer identifierType, String identifierValue);
+         
+             // 查询Credential
+             ACredential queryCredential(Long userId, Integer credentialType);
+         
+             // 查询用户的Permission
+             List<String> queryPermissionIdList(Long userId);
+             // 查询所有的Permission
+             List<? extends APermission> queryAllPermission();
+         
+             // 查询ValidCode
+             String queryValidCode(String mobile);
+             // 移除ValidCode，ValidCode验证成功之后需要
+             void removeValidCode(String mobile);
+         
+             // 获取一个新的UserID,自动注册时需要
+             Long nextUserId();
+             // 保存用户信息： 邀请码，手机号,自动注册时需要
+             void saveUser(Long userId, String invitationCode, String mobile);
+             // 保存用户信息： 邀请码，社交张账号信息,自动注册时需要
+             void saveUser(Long userId, String invitationCode, ASocialDetail socialDetail);
+         
+             // 查询用户已保存的Social信息
+             ASocial querySocial(Long userId, Integer identifierType, Integer socialType);
+             // 保存社交账号信息，自动注册时需要
+             void saveSocial(Long userId, Integer identifierType, Integer socialType, ASocialDetail socialDetail);
+             // 更新社交账号信息，可选
+             void updateSocial(Long userId, Integer identifierType, Integer socialType, ASocialDetail socialDetail);
+         }
+         ```
      - AJWTAbstractService： JWT服务
-     ```$xslt
-     public abstract class AJWTAbstractService {
-        // 保存token
-        protected abstract void saveToken(String id, String token);
-        // 移除token
-        protected abstract void removeToken(String id);
-        // 查询token
-        protected abstract String queryToken(String id);
-        // 获取token id
-        protected abstract String getJWTID(AIdentity identity);
-     }
-     ```     
+         ```$xslt
+         public abstract class AJWTAbstractService {
+            // 保存token
+            protected abstract void saveToken(String id, String token);
+            // 移除token
+            protected abstract void removeToken(String id);
+            // 查询token
+            protected abstract String queryToken(String id);
+            // 获取token id
+            protected abstract String getJWTID(AIdentity identity);
+         }
+         ```     
    - social: 社交账号信息提供服务
-     ```$xslt
-     public abstract class ASocialProviderRegister {
-        // 支持的社交账号类型
-        Integer socialType();
-        // 获取社交账号信息：
-        // code: 授权码
-        // data: 请求数据
-        ASocialDetail querySocialDetail(String code, Map<String, Object> data);
-     }
-     ```
+         ```$xslt
+         public abstract class ASocialProviderRegister {
+            // 支持的社交账号类型
+            Integer socialType();
+            // 获取社交账号信息：
+            // code: 授权码
+            // data: 请求数据
+            ASocialDetail querySocialDetail(String code, Map<String, Object> data);
+         }
+         ```
 ## 前端使用
 ### 登录请求参数
 - identifierType: 用户唯一标识类型
