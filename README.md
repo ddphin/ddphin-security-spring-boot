@@ -111,8 +111,6 @@
             String getRequestMethod();// METHOD: 如 GET/PUT/POST/DELETE
         }
         ```
-        `RequestUrl`即 HTTP 请求的URL模式，如`/user/account/*`<br>
-        `RequestMethod`即 HTTP 请求的METHOD:`GET/PUT/POST/DELETE`等    
      - `ASocialDetail`:通过`ASocialProviderRegister`从从第三方社交平台获取社交账号详情
         ```$xslt
         public interface ASocialDetail {
