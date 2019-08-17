@@ -192,8 +192,10 @@
         - identifierType=0(MOBILE)时：手机号
         - identifierType=1(WX)时：0、1、2、3、4
         <br>即ASocialType枚举中的WX_APP_OPENID、WX_H5_OPENID、WX_XCX_OPENID、WX_SUB_OPENID、WX_SRV_OPENID的 ordinal() 方法返回值
+        <br>也可以自定义
         - identifierType=2(QQ)时：5、6
         <br>即ASocialType枚举中的QQ_APP_OPENID、QQ_H5_OPENID的 ordinal() 方法返回值
+        <br>也可以自定义
 - credentialType: 用户凭据类型
     - 必填
     - 有效值为：0、1、2

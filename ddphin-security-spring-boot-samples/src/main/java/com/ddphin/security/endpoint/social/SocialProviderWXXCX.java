@@ -27,8 +27,8 @@ public class SocialProviderWXXCX extends ASocialProviderRegister {
     private String APP_SECRET;
 
     @Override
-    public ASocialType socialType() {
-        return ASocialType.WX_XCX_OPENID;
+    public Integer socialType() {
+        return ASocialType.WX_XCX_OPENID.ordinal();
     }
 
     @Override
