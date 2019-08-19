@@ -169,7 +169,8 @@
             protected abstract String getJWTID(AIdentity identity);
          }
          ```     
-   - social: 社交账号信息提供服务
+   - social: 
+   <br>社交账号信息提供服务
          ```$xslt
          public abstract class ASocialProviderRegister {
             // 支持的社交账号类型
