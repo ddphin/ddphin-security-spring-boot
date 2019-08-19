@@ -47,6 +47,7 @@
             - /tourist/*
     ```
 -  实现以下三类接口(抽象类)
+<br>entity,service,social
    - entity
      <br>认证所需的实体类
      - `AIdentifier`：用户唯一标识接口
