@@ -171,16 +171,16 @@
          ```     
    - social: 
    <br>社交账号信息提供服务
-         ```$xslt
-         public abstract class ASocialProviderRegister {
-            // 支持的社交账号类型
-            Integer socialType();
-            // 获取社交账号信息：
-            // code: 授权码
-            // data: 请求数据
-            ASocialDetail querySocialDetail(String code, Map<String, Object> data);
-         }
-         ```
+       ```$xslt
+       public abstract class ASocialProviderRegister {
+          // 支持的社交账号类型
+          Integer socialType();
+          // 获取社交账号信息：
+          // code: 授权码
+          // data: 请求数据
+          ASocialDetail querySocialDetail(String code, Map<String, Object> data);
+       }
+       ```
 ## 前端使用
 ### 登录请求参数
 - identifierType: 用户唯一标识类型
