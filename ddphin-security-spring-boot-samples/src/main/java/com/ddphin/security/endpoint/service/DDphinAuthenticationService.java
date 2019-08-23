@@ -108,4 +108,13 @@ public class DDphinAuthenticationService extends IDWorkerAware implements Authen
     public void updateSocial(Long userId, Integer identifierType, Integer socialType, ASocialDetail socialInfo) {
         aUserSocialMapper.update(userId, identifierType, socialType, (SocialDetail) socialInfo);
     }
+
+    @Override
+    public String[] getPermissiveUrl() {
+        return new String[]{
+                this.getLoginUrl(),
+                this.getLogoutUrl(),
+                "/tourist/**"
+        };
+    }
 }

@@ -2,7 +2,6 @@ package com.ddphin.security.configuration;
 
 import com.ddphin.security.configurer.AJwtLoginConfigurer;
 import com.ddphin.security.configurer.ARestLoginConfigurer;
-import com.ddphin.security.configurer.AWebSecurityProperties;
 import com.ddphin.security.decide.APermissionBasedVoter;
 import com.ddphin.security.decide.APermissionFilterInvocationSecurityMetadataSource;
 import com.ddphin.security.endpoint.service.AuthenticationService;
@@ -12,7 +11,6 @@ import com.ddphin.security.jwt.AJWTService;
 import com.ddphin.security.provider.AIdentityAuthenticationProvider;
 import com.ddphin.security.provider.AJwtAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.vote.UnanimousBased;
@@ -39,20 +37,16 @@ import java.util.Collections;
  * @Author ddphin
  */
 @EnableWebSecurity
-@EnableConfigurationProperties({AWebSecurityProperties.class})
 public class AWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     private AuthenticationService authenticationService;
     private AJWTService aJWTService;
-    private AWebSecurityProperties properties;
 
     @Autowired
     public AWebSecurityConfigurer(
             AuthenticationService authenticationService,
-            AJWTService aJWTService,
-            AWebSecurityProperties properties) {
+            AJWTService aJWTService) {
         this.authenticationService = authenticationService;
         this.aJWTService = aJWTService;
-        this.properties = properties;
     }
 
     protected void configure(HttpSecurity http) throws Exception {
@@ -66,12 +60,12 @@ public class AWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
                 .formLogin().disable()
                 .cors()
                 .and()
-                .apply(new ARestLoginConfigurer<>(aJWTService, properties.getLogin()))
+                .apply(new ARestLoginConfigurer<>(aJWTService, authenticationService.getLoginUrl()))
                 .and()
-                .apply(new AJwtLoginConfigurer<>(aJWTService, properties.getPermissive()))
+                .apply(new AJwtLoginConfigurer<>(aJWTService, authenticationService.getPermissiveUrl()))
                 .and()
                 .addFilterBefore(new AOptionsRequestFilter(), CorsFilter.class)
-                .logout().logoutUrl(properties.getLogout())
+                .logout().logoutUrl(authenticationService.getLogoutUrl())
                 .addLogoutHandler(new AJwtClearLogoutHandler(aJWTService))
                 .logoutSuccessHandler(new HttpStatusReturningLogoutSuccessHandler())
                 .and()

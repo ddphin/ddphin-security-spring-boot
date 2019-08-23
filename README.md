@@ -33,19 +33,6 @@
   `(AIdentity) SecurityContextHolder.getContext().getAuthentication().getDetails()`
 
 ## 服务端使用
-- 配置
-   - login： 登录url
-   - logout：登出url
-   - permissive： 无需登录即可访问的url（列表）
-    ```$xslt
-    spring:
-      security:
-        authorize:
-          login: /login
-          logout: /logout
-          permissive:
-            - /tourist/*
-    ```
 -  实现以下三类接口(抽象类)
 <br>entity,service,social
    - entity
@@ -154,6 +141,13 @@
              void saveSocial(Long userId, Integer identifierType, Integer socialType, ASocialDetail socialDetail);
              // 更新社交账号信息，可选
              void updateSocial(Long userId, Integer identifierType, Integer socialType, ASocialDetail socialDetail);
+             
+             // 登录url
+             default String getLoginUrl() { return "/login"; }
+             // 登出url         
+             default String getLogoutUrl() { return "/logout"; }
+             // 无需登录就可访问的url         
+             default String[] getPermissiveUrl() { return new String[] {this.getLoginUrl(), this.getLogoutUrl()}; }
          }
          ```
      - AJWTAbstractService： JWT服务
