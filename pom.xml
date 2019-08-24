@@ -29,7 +29,7 @@
 
     <groupId>com.github.ddphin</groupId>
     <artifactId>ddphin-security-spring-boot</artifactId>
-    <version>1.0.6</version>
+    <version>1.0.7</version>
     <packaging>pom</packaging>
 
     <name>ddphin-security-spring-boot</name>
@@ -68,7 +68,7 @@
         <spring-boot.version>2.1.5.RELEASE</spring-boot.version>
         <lombok.version>1.18.8</lombok.version>
         <fastjson.version>1.2.47</fastjson.version>
-        <ddphin-security.version>1.0.6</ddphin-security.version>
+        <ddphin-security.version>1.0.7</ddphin-security.version>
     </properties>
 
     <dependencyManagement>
