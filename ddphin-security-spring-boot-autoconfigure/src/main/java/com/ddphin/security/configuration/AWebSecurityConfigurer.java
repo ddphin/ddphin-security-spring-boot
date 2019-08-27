@@ -13,6 +13,7 @@ import com.ddphin.security.provider.AJwtAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.access.AccessDecisionManager;
+import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.access.vote.UnanimousBased;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.ObjectPostProcessor;
@@ -77,7 +78,7 @@ public class AWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         return new ObjectPostProcessor<FilterSecurityInterceptor>() {
             @Override
             public <O extends FilterSecurityInterceptor> O postProcess(O fsi) {
-                AccessDecisionManager accessDecisionManager = new UnanimousBased(
+                AccessDecisionManager accessDecisionManager = new AffirmativeBased(
                         Collections.singletonList(new APermissionBasedVoter()));
 
                 APermissionFilterInvocationSecurityMetadataSource securityMetadataSource =
