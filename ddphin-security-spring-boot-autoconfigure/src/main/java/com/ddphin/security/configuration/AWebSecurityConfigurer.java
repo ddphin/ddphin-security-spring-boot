@@ -78,8 +78,9 @@ public class AWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
         return new ObjectPostProcessor<FilterSecurityInterceptor>() {
             @Override
             public <O extends FilterSecurityInterceptor> O postProcess(O fsi) {
-                AccessDecisionManager accessDecisionManager = new AffirmativeBased(
+                AffirmativeBased accessDecisionManager = new AffirmativeBased(
                         Collections.singletonList(new APermissionBasedVoter()));
+                accessDecisionManager.setAllowIfAllAbstainDecisions(true);
 
                 APermissionFilterInvocationSecurityMetadataSource securityMetadataSource =
                         new APermissionFilterInvocationSecurityMetadataSource(
