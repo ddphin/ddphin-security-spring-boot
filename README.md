@@ -3,7 +3,7 @@
         <dependency>
             <groupId>com.github.ddphin</groupId>
             <artifactId>ddphin-security-spring-boot-starter</artifactId>            
-            <version>1.1.0</version>
+            <version>1.1.1</version>
         </dependency>
 ```
 ## 功能
