@@ -12,6 +12,7 @@ import com.ddphin.security.provider.AIdentityAuthenticationProvider;
 import com.ddphin.security.provider.AJwtAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.vote.AffirmativeBased;
 import org.springframework.security.access.vote.UnanimousBased;
@@ -41,13 +42,16 @@ import java.util.Collections;
 public class AWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     private AuthenticationService authenticationService;
     private AJWTService aJWTService;
+    private DataSourceTransactionManager dataSourceTransactionManager;
 
     @Autowired
     public AWebSecurityConfigurer(
             AuthenticationService authenticationService,
-            AJWTService aJWTService) {
+            AJWTService aJWTService,
+            DataSourceTransactionManager dataSourceTransactionManager) {
         this.authenticationService = authenticationService;
         this.aJWTService = aJWTService;
+        this.dataSourceTransactionManager = dataSourceTransactionManager;
     }
 
     protected void configure(HttpSecurity http) throws Exception {
@@ -97,7 +101,7 @@ public class AWebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
         auth
-                .authenticationProvider(new AIdentityAuthenticationProvider(authenticationService))
+                .authenticationProvider(new AIdentityAuthenticationProvider(authenticationService, dataSourceTransactionManager))
                 .authenticationProvider(new AJwtAuthenticationProvider(aJWTService));
     }
 
