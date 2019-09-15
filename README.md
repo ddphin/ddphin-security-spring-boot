@@ -3,7 +3,7 @@
         <dependency>
             <groupId>com.github.ddphin</groupId>
             <artifactId>ddphin-security-spring-boot-starter</artifactId>            
-            <version>1.1.1</version>
+            <version>1.1.3</version>
         </dependency>
 ```
 ## 功能
@@ -161,6 +161,8 @@
             protected abstract String queryToken(String id);
             // 获取token id
             protected abstract String getJWTID(AIdentity identity);
+            // 成功后自定义额外处理逻辑
+            default void onSuccess() {}
          }
          ```     
    - social: 
